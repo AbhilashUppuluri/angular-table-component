@@ -1,0 +1,66 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th width="100">Id</th>
+            <th>GUID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Company</th>
+            <th>Date Entry</th>
+            <th>Date Exit</th>
+            <th>Date First</th>
+            <th>Date Recent</th>
+            <th>Org. No</th>
+            <th>Address 1</th>
+            <th>City</th>
+            <th>ZIP</th>
+            <th>Geo</th>
+            <th>PAN</th>
+            <th>PIN</th>
+            <th>Status</th>
+            <th>Fee</th>
+            <th>URL</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of displayData">
+            <td>{{row.id}}</td>
+            <td>{{row.guid}}</td>
+            <td>{{row.name}}</td>
+            <td>{{row.phone}}</td>
+            <td>{{row.email}}</td>
+            <td>{{row.company}}</td>
+            <td>{{row.date_entry}}</td>
+            <td>{{row.date_exit}}</td>
+            <td>{{row.date_first}}</td>
+            <td>{{row.date_recent}}</td>
+            <td>{{row.org_num}}</td>
+            <td>{{row.address_1}}</td>
+            <td>{{row.city}}</td>
+            <td>{{row.zip}}</td>
+            <td>{{row.geo}}</td>
+            <td>{{row.pan}}</td>
+            <td>{{row.pin}}</td>
+            <td>{{row.statu}}</td>
+            <td>{{row.fee}}</td>
+            <td>{{row.url}}</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="20">
+                <div class="page-options">
+                    <button [ngClass]="{disabled: currentPage==0}" class="prev" (click)="handlePrev()">Prev</button>
+                    <select [(ngModel)]="pageSize" (ngModelChange)="changePageSize($event)">
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                    </select>
+                    <button [ngClass]="{disabled: currentPage==totalPages-1}" class="next"
+                        (click)="handleNext()">Next</button>
+                </div>
+            </td>
+        </tr>
+    </tfoot>
+</table>
