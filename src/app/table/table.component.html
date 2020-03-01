@@ -21,6 +21,7 @@
             <th>Status</th>
             <th>Fee</th>
             <th>URL</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
@@ -45,6 +46,7 @@
             <td>{{row.statu}}</td>
             <td>{{row.fee}}</td>
             <td>{{row.url}}</td>
+            <td><button (click)="submitRow(row)">Submit</button></td>
         </tr>
     </tbody>
     <tfoot>

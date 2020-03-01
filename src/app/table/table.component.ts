@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { TableService } from '../table.service';
 
 @Component({
   selector: 'app-table',
@@ -16,7 +17,7 @@ export class TableComponent implements OnInit {
   public currentPage: number = 0;
   public totalPages: number = 0;
 
-  constructor() { }
+  constructor(private tableService: TableService) { }
 
   ngOnInit() {
     this.initializeData();
@@ -31,7 +32,7 @@ export class TableComponent implements OnInit {
     this.initializeData();
   }
 
-  handleNext() {
+  public handleNext() {
     if (this.currentPage < this.totalPages-1) {
       this.currentPage++;
       let count = this.currentPage * Number(this.pageSize);
@@ -39,12 +40,22 @@ export class TableComponent implements OnInit {
     }
   }
 
-  handlePrev() {
+  public handlePrev() {
     if (this.currentPage > 0) {
       this.currentPage--;
       let count = this.currentPage * Number(this.pageSize);
       this.displayData = this.data.slice(count, count + Number(this.pageSize));
     }
+  }
+
+  public submitRow(row) {
+    console.log('row: ', row);
+    this.tableService.submitRow(row.id, row.status)
+    .subscribe((data) => {
+      console.log('successfully submitted the row');
+    }, (error) => {
+      console.log('Failed to submit the row');
+    });
   }
 
 }
