@@ -49,7 +49,6 @@ export class TableComponent implements OnInit {
   }
 
   public submitRow(row) {
-    console.log('row: ', row);
     this.tableService.submitRow(row.id, row.status)
     .subscribe((data) => {
       console.log('successfully submitted the row');
